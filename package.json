@@ -1,0 +1,25 @@
+{
+  "name": "telegram_bot",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/roshan-baka-dev/telegram_bot.git"
+  },
+  "author": "roshan lakra",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/roshan-baka-dev/telegram_bot/issues"
+  },
+  "homepage": "https://github.com/roshan-baka-dev/telegram_bot#readme",
+  "dependencies": {
+    "@google-cloud/translate": "^7.0.0",
+    "google-translate-api": "^2.3.0",
+    "telegraf": "^4.8.5",
+    "translate-google": "^1.5.0"
+  }
+}
