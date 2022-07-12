@@ -1,6 +1,7 @@
 {
   "name": "telegram_bot",
   "version": "1.0.0",
+  "type": "module",
   "description": "",
   "main": "app.js",
   "scripts": {
@@ -18,7 +19,15 @@
   "homepage": "https://github.com/roshan-baka-dev/telegram_bot#readme",
   "dependencies": {
     "@google-cloud/translate": "^7.0.0",
+    "axios": "^0.27.2",
+    "fs": "^0.0.1-security",
     "google-translate-api": "^2.3.0",
+    "imagemin": "^8.0.1",
+    "imagemin-jpegtran": "^7.0.0",
+    "imagemin-pngquant": "^9.0.2",
+    "jpegtran": "^2.0.0",
+    "pngquant": "^4.0.0",
+    "promise": "^8.1.0",
     "telegraf": "^4.8.5",
     "translate-google": "^1.5.0"
   }

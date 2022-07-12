@@ -1,27 +1,48 @@
-const { Telegraf } = require("telegraf");
+// const { Telegraf } = require("telegraf");
+import token from "./token.json" assert {type:'json'};
 
-const bot = new Telegraf("5402819513:AAHeAf6fC58PWIFpRmE-BxP6S5AOrzXLz4I");
+import { Telegraf } from "telegraf";
+const bot = new Telegraf(token.key);
 
+import promise from "promise";
+import fs from "fs";
 
-const translator=require('translate-google');
+import axios from "axios";
 
-bot.start((ctx)=>{
-    ctx.reply("hello,send me a text you want to convert or use '/help' comand");
+// const imagemin = require('imagemin');
+
+// const imageminJpegTran=require('imagemin-jpegtran');
+
+// const imageminPngQuant=require('imagemin-pngquant');
+
+import imagemin from "imagemin";
+import imageminJpegtran from "imagemin-jpegtran";
+import imageminPngquant from "imagemin-pngquant";
+
+bot.on('photo',(ctx)=>{
+    const files=ctx.update.message.photo;
+    console.log(files);
+    const fileId=files[0].file_id;
+    ctx.telegram.getFileLink(fileId).then(url => {
+    axios.get(url.href,{responseType:'stream'}).then((response)=>{
+        return new promise((resolve,reject)=>{
+            response.data.pipe(fs.createWriteStream(`images/download/1.jpg`));
+
+                // const files = await imagemin(["images/*.{jpg,png}"], {
+                //     destination: "build/images",
+                //     plugins: [
+                //       imageminJpegtran(),
+                //       imageminPngquant({
+                //         quality: [0.6, 0.8],
+                //       }),
+                //     ],
+                //   });
+
+        });
+    });
+    });
+    ctx.replyWithPhoto({source:"images/download/1.jpg"},{caption:"compressed photo"});
 });
-bot.help((ctx)=>{
-    ctx.reply();
-})
-
-
-let f='en';
-let s='hi';
-
-bot.on('text',async(ctx)=>{
-    const text=(ctx.update.message.text);
-    const translation=await translator(text,{from:f,to:s});
-    ctx.reply(translation);
-});
+//console.log(files);
 
 bot.launch();
-
-  
